@@ -1,10 +1,11 @@
+# language: pt
 
-Feature: Title of your feature
-  I want to use this template for my feature file
+Funcionalidade: Login
 
   @tag1
-  Scenario: Title of your scenario
-    Given que eu esteja na tela de login
-    When faço login com o usuário "mercury" e senha "mercury"
-    Then Então sou autenticado com sucesso
+  Cenário: Realizar login​
+    Dado que eu esteja na tela de login​
+    Quando faço login com o usuário "mercury" e senha "mercury" ​
+    Então sou autenticado com sucesso
 
+ 
