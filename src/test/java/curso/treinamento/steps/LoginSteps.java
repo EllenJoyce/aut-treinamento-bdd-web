@@ -9,30 +9,32 @@ import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 
 public class LoginSteps {
-	
-	
+
+	WebDriver driver;
+
 	@Dado("^que eu esteja na tela de login​$")
-	public void queEuEstejaNaTelaDeLogin​()  {
-		
-		System.setProperty("webdriver.chrome.driver","src\\test\\resources\\drivers\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+	public void queEuEstejaNaTelaDeLogin​() {
+
+		System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\drivers\\chromedriver.exe");
+
+		driver = new ChromeDriver();
+
 		driver.get("http://newtours.demoaut.com/");
-		
-		driver.findElement(By.name("userName")).sendKeys("mercury");
-		driver.findElement(By.name("password")).sendKeys("mercury");
-		driver.findElement(By.name("login")).click();
-		
-		//EdgeDriver(); IE
-		//GeckoDriver(); Mozila Firefox
+
+		// EdgeDriver(); IE
+		// GeckoDriver(); Mozila Firefox
 	}
 
 	@Quando("^faço login com o usuário \"([^\"]*)\" e senha \"([^\"]*)\" ​$")
-	public void facoLoginComOUsuarioESenha​(String arg1, String arg2)  {
-	 
+	public void facoLoginComOUsuarioESenha​(String user, String pass) {
+
+		driver.findElement(By.name("userName")).sendKeys(user);
+		driver.findElement(By.name("password")).sendKeys(pass);
+		driver.findElement(By.name("login")).click();
 	}
 
 	@Então("^sou autenticado com sucesso$")
-	public void souAutenticadoComSucesso()  {
+	public void souAutenticadoComSucesso() {
 
 	}
 
