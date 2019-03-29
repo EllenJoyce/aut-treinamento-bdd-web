@@ -4,10 +4,14 @@ package curso.treinamento.steps;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JSpinner.ListEditor;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.SendKeysAction;
+import org.openqa.selenium.support.ui.Select;
 
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
@@ -30,6 +34,7 @@ public class RegistroSteps {
 		
 	    driver.findElement(By.linkText("REGISTER")).click();
 	    
+	    
 	    Assert.assertTrue("Página'Resgiter' Não apresentada com sucesso",driver.findElement(By.xpath("//img[@src='/images/masts/mast_register.gif']")).isDisplayed());
 	    
 	}
@@ -40,6 +45,32 @@ public class RegistroSteps {
 		List<Map<String, String>> list = dataTable.asMaps(String.class, String.class);
 		
 	    driver.findElement(By.name("firstName")).sendKeys(list.get(0).get("First Name"));
+	    
+	    driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys(list.get(0).get("Last name"));
+	    
+	    driver.findElement(By.name("phone")).sendKeys(list.get(0).get("Phone"));
+	    
+	    driver.findElement(By.id("userName")).sendKeys(list.get(0).get("Email"));
+	    
+	    driver.findElement(By.name("address1")).sendKeys(list.get(0).get("Address"));
+	    
+	    driver.findElement(By.name("address2")).sendKeys(list.get(0).get("Address Complement"));
+	    
+	    driver.findElement(By.name("city")).sendKeys(list.get(0).get("City"));
+	    
+	    driver.findElement(By.name("state")).sendKeys(list.get(0).get("State Province"));
+	    
+	    driver.findElement(By.name("postalCode")).sendKeys(list.get(0).get("Postal code"));
+	    
+	    new Select(driver.findElement(By.name("country"))).selectByVisibleText(list.get(0).get("Country"));
+	    
+	    driver.findElement(By.id("email")).sendKeys(list.get(0).get("User name"));
+	    
+	    driver.findElement(By.name("password")).sendKeys(list.get(0).get("Password"));
+	    
+	    driver.findElement(By.name("confirmPassword")).sendKeys(list.get(0).get("Confirm password"));
+	    
+	    driver.findElement(By.name("register")).click();
 	    
 	}
 
